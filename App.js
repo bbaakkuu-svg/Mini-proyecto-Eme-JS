@@ -11,6 +11,25 @@ const incidencias = [
 
 let recursosDisponibles = 10;
 
+function calcularRecursos(gravedad) {
+    let recursos = 1;
+    switch (gravedad) {
+        case 5:
+            recursos = 3;
+            break;
+        case 3:
+        case 4:
+            recursos = 2;
+            break;
+        case 1:
+        case 2:
+        default:
+            recursos = 1;
+            break;
+    }
+    return recursos;
+}
+
 for (let i = 0; i < incidencias.length; i++) {
     let incidente = incidencias[i];
 
@@ -28,7 +47,9 @@ for (let i = 0; i < incidencias.length; i++) {
         console.log(`Procesando incidencia #${incidente.id}: ${incidente.descripcion} (Gravedad: ${incidente.gravedad})`);
     }
 
-    recursosDisponibles -= incidente.recursosNecesarios;
+    let recursosNecesarios = calcularRecursos(incidente.gravedad);
+    recursosDisponibles -= recursosNecesarios;
+
     console.log(`Recursos restantes: ${recursosDisponibles}`);
 
     if (recursosDisponibles <= 0) {
