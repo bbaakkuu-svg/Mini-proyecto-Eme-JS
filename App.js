@@ -9,8 +9,6 @@ const incidencias = [
     { id: 6, descripcion: "Falsa alarma de incendio en colegio", gravedad: 1, estado: "resuelta", recursosNecesarios: 1 }
 ];
 
-let recursosDisponibles = 10;
-
 function calcularRecursos(gravedad) {
     let recursos = 1;
     switch (gravedad) {
@@ -30,31 +28,41 @@ function calcularRecursos(gravedad) {
     return recursos;
 }
 
-for (let i = 0; i < incidencias.length; i++) {
-    let incidente = incidencias[i];
+function procesarIncidente(listaIncidencias, recursosIniciales) {
+    let recursosDisponibles = recursosIniciales;
 
-    if (incidente.estado === "resuelta") {
-        if (_DEBUGMODE) {
-            console.log(`Incidencia #${incidente.id} ya resuelta`);
+    for (let i = 0; i < incidencias.length; i++) {
+        let incidente = incidencias[i];
+
+        // Punto de interrupcion para depurar
+        debugger;
+
+        if (incidente.estado === "resuelta") {
+            if (_DEBUGMODE) {
+                console.log(`Incidencia #${incidente.id} ya resuelta`);
+            }
+            continue;
         }
-        continue;
-    }
 
-    if (incidente.gravedad === 5) {
-        // Para que salga con el icono de alerta
-        console.error(`¡ALERTA MÁXIMA! Incidencia #${incidente.id} - ${incidente.descripcion}`);
-    } else {
-        console.log(`Procesando incidencia #${incidente.id}: ${incidente.descripcion} (Gravedad: ${incidente.gravedad})`);
-    }
+        if (incidente.gravedad === 5) {
+            // Para que salga con el icono de alerta
+            console.error(`¡ALERTA MÁXIMA! Incidencia #${incidente.id} - ${incidente.descripcion}`);
+        } else {
+            console.log(`Procesando incidencia #${incidente.id}: ${incidente.descripcion} (Gravedad: ${incidente.gravedad})`);
+        }
 
-    let recursosNecesarios = calcularRecursos(incidente.gravedad);
-    recursosDisponibles -= recursosNecesarios;
+        let recursosNecesarios = calcularRecursos(incidente.gravedad);
+        recursosDisponibles -= recursosNecesarios;
 
-    console.log(`Recursos restantes: ${recursosDisponibles}`);
+        console.log(`Recursos restantes: ${recursosDisponibles}`);
 
-    if (recursosDisponibles <= 0) {
-        // Para que salga con el icono de advertencia
-        console.warn(`¡Recursos agotados! Deteniendo sistema.`);
-        break;
+        if (recursosDisponibles <= 0) {
+            // Para que salga con el icono de advertencia
+            console.warn(`¡Recursos agotados! Deteniendo sistema.`);
+            break;
+        }
     }
 }
+
+// Llamamos a la función para procesar las incidencias
+procesarIncidente(incidencias, 10);
