@@ -43,8 +43,3 @@ A lo largo de las sesiones de trabajo, la labor de supervisión del Navegador pe
    * **Roles:** **Driver:** Baku | **Navigator:** Migue
    * *Diagnóstico:* Con la colección inicial de 6 incidencias y 10 recursos asignados, el cálculo matemático siempre finalizaba con saldo positivo (1 recurso restante), de modo que la condición de seguridad `recursosDisponibles <= 0` jamás se alcanzaba y el `console.warn` quedaba inoperativo.
    * *Solución:* Se identificó el caso borde y se añadió una séptima incidencia pendiente para forzar el agotamiento de recursos y validar fehacientemente la detención por `break`.
-
-**Firmado por:**
-
-* **Baku** - [Perfil](https://github.com/bbaakkuu-svg)
-* **Migue** - [Perfil](https://github.com/LastraMigue)

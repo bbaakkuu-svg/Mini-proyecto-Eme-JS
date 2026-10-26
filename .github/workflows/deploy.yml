@@ -34,9 +34,9 @@ jobs:
       - name: Validar sintaxis y ejecución del proyecto
         run: |
           echo ">> Validando sintaxis de JavaScript..."
-          node --check src/App.js
+          node --check src/app.js
           echo ">> Ejecutando prueba de despacho del sistema..."
-          node src/App.js
+          node src/app.js
 
       - name: Configurar GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'

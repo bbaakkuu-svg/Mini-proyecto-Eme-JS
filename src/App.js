@@ -1,5 +1,5 @@
 /**
- * @file App.js
+ * @file app.js
  * @description Módulo para la gestión y asignación de recursos ante incidencias de emergencia.
  */
 
