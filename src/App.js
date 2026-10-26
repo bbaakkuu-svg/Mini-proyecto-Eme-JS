@@ -80,18 +80,26 @@ function procesarIncidente(listaIncidencias, recursosIniciales) {
         if (incidente.gravedad === 5) {
             // Punto de interrupción en filtro crítico (máxima gravedad)
             debugger;
-            console.error(`¡ALERTA MÁXIMA! Incidencia #${incidente.id} - ${incidente.descripcion}`);
+            if (_DEBUGMODE) {
+                console.error(`¡ALERTA MÁXIMA! Incidencia #${incidente.id} - ${incidente.descripcion}`);
+            }
         } else {
-            console.log(`Procesando incidencia #${incidente.id}: ${incidente.descripcion} (Gravedad: ${incidente.gravedad})`);
+            if (_DEBUGMODE) {
+                console.log(`Procesando incidencia #${incidente.id}: ${incidente.descripcion} (Gravedad: ${incidente.gravedad})`);
+            }
         }
 
         let recursosNecesarios = calcularRecursos(incidente.gravedad);
         recursosDisponibles -= recursosNecesarios;
 
-        console.log(`Recursos restantes: ${recursosDisponibles}`);
+        if (_DEBUGMODE) {
+            console.log(`Recursos restantes: ${recursosDisponibles}`);
+        }
 
         if (recursosDisponibles <= 0) {
-            console.warn(`¡Recursos agotados! Deteniendo sistema.`);
+            if (_DEBUGMODE) {
+                console.warn(`¡Recursos agotados! Deteniendo sistema.`);
+            }
             break;
         }
     }

@@ -4,6 +4,18 @@ Sistema de simulación y despacho de recursos para la gestión de incidencias de
 
 ---
 
+## Autores y Entrega
+
+| Rol | Alumno | GitHub |
+| :--- | :--- | :--- |
+| Driver / Navigator | Bakunin Sosa | [@bbaakkuu-svg](https://github.com/bbaakkuu-svg) |
+| Driver / Navigator | Miguel Ángel Lastra | [@LastraMigue](https://github.com/LastraMigue) |
+
+* **Repositorio:** [github.com/bbaakkuu-svg/Mini-proyecto-Eme-JS](https://github.com/bbaakkuu-svg/Mini-proyecto-Eme-JS)
+* **Despliegue GitHub Pages:** [bbaakkuu-svg.github.io/Mini-proyecto-Eme-JS](https://bbaakkuu-svg.github.io/Mini-proyecto-Eme-JS/)
+
+---
+
 ## 1. Descripción del Proyecto
 
 El sistema evalúa una cola de alertas registradas en el parque de emergencias, discriminando aquellas que ya han sido solventadas y asignando vehículos/dotaciones según el nivel de riesgo de cada suceso. Cuando la reserva de recursos se agota, el sistema activa una parada de seguridad para no comprometer el servicio.
