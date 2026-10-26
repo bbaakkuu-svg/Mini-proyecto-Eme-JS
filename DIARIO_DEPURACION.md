@@ -3,6 +3,7 @@
 ## 1. Evidencias de Depuración con DevTools
 
 ### 1.1. Inspección de Ámbito (Scope) y Pila de Llamadas (Call Stack)
+
 Pausa de ejecución en punto crítico de filtrado (`debugger;` en incidencia de gravedad 5). Se observa el estado congelado de variables locales (`incidente`, `recursosDisponibles: 10`, índice `i: 0`) y la traza en la pila de llamadas (`procesarIncidente` en línea 82):
 
 ![Depuración en Sources](./resources/DevTools-Resources.png)
@@ -10,18 +11,21 @@ Pausa de ejecución en punto crítico de filtrado (`debugger;` en incidencia de 
 ---
 
 ### 1.2. Traza Final de Ejecución en Consola
+
 Salida completa de la consola auditando el filtrado por estados, avisos de alerta máxima (`console.error`), cálculo dinámico de recursos y detección de recursos agotados (`console.warn` con detención por `break`):
 
-![Consola al finalizar proceso](./resources/DevTools-fin%20proceso.png)
+![Consola al finalizar proceso](<./resources/DevTools-fin%20proceso.png>)
 
 ---
 
 ## 2. Reflexión sobre Pair Programming y Control de Errores
 
 ### 2.1. Experiencia de Pair Programming
+
 La metodología de programación en pareja (*Driver/Navigator*), alternando los roles de Conductor y Navegador entre ambos integrantes, resultó determinante para la calidad del código y la fluidez del desarrollo. Mientras el Conductor se concentraba en la implementación sintáctica, el formateo y la manipulación inmediata del DOM y las estructuras de datos, el Navegador mantuvo una perspectiva global de arquitectura, buenas prácticas y anticipación de casos límite. Esta sinergia permitió iterar rápidamente con revisiones continuas antes de consolidar cada commit en el repositorio.
 
 ### 2.2. Control de Errores Detectados por el Navegador
+
 A lo largo de las sesiones de trabajo, la labor de supervisión del Navegador permitió identificar y corregir fallos relevantes que el Conductor había pasado por alto:
 
 1. **Falta de encapsulamiento y modularidad (`commit cf98d61`):**
@@ -35,5 +39,6 @@ A lo largo de las sesiones de trabajo, la labor de supervisión del Navegador pe
    * *Solución:* Se identificó el caso borde y se añadió una séptima incidencia pendiente para forzar el agotamiento de recursos y validar fehacientemente la detención por `break`.
 
 **Firmado por:**
+
 * **Baku** (Driver / Navigator)
 * **Migue** (Driver / Navigator)
