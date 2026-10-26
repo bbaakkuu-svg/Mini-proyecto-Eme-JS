@@ -81,4 +81,4 @@ El motor imprimirá directamente el flujo de ejecución completo y la traza de r
 
 Para consultar las evidencias fotográficas de depuración y la reflexión metodológica del trabajo en pareja (*Driver/Navigator*), consulta el archivo:
 
-* [DIARIO_DEPURACION.md](./DIARIO_DEPURACION.md)
+* Diario de depuración: [DIARIO_DEPURACION.md](./DIARIO_DEPURACION.md)
