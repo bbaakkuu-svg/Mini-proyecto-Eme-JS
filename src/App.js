@@ -1,5 +1,27 @@
+/**
+ * @file App.js
+ * @description Módulo para la gestión y asignación de recursos ante incidencias de emergencia.
+ */
+
+/**
+ * Modo de depuración activo.
+ * @type {boolean}
+ */
 const _DEBUGMODE = true;
 
+/**
+ * @typedef {Object} Incidencia
+ * @property {number} id - Identificador único de la incidencia.
+ * @property {string} descripcion - Breve detalle de lo ocurrido.
+ * @property {number} gravedad - Nivel de gravedad en escala de 1 a 5.
+ * @property {('pendiente'|'resuelta')} estado - Estado actual de la incidencia.
+ * @property {number} recursosNecesarios - Cantidad estimada de recursos para su resolución.
+ */
+
+/**
+ * Listado de incidencias registradas en el sistema.
+ * @type {Incidencia[]}
+ */
 const incidencias = [
     { id: 1, descripcion: "Incendio forestal en sector sur", gravedad: 5, estado: "pendiente", recursosNecesarios: 3 },
     { id: 2, descripcion: "Fuga menor de agua en vía pública", gravedad: 2, estado: "resuelta", recursosNecesarios: 1 },
@@ -9,6 +31,12 @@ const incidencias = [
     { id: 6, descripcion: "Falsa alarma de incendio en colegio", gravedad: 1, estado: "resuelta", recursosNecesarios: 1 }
 ];
 
+/**
+ * Calcula los recursos necesarios en función del nivel de gravedad asignado.
+ *
+ * @param {number} gravedad - Nivel de gravedad de la incidencia (1 al 5).
+ * @returns {number} Número de recursos requeridos para atender la incidencia.
+ */
 function calcularRecursos(gravedad) {
     let recursos = 1;
     switch (gravedad) {
@@ -28,13 +56,20 @@ function calcularRecursos(gravedad) {
     return recursos;
 }
 
+/**
+ * Procesa la cola de incidencias evaluando su estado y deduciendo los recursos disponibles.
+ *
+ * @param {Incidencia[]} listaIncidencias - Colección de incidencias a tramitar.
+ * @param {number} recursosIniciales - Cantidad total de recursos asignados al inicio del turno.
+ * @returns {void}
+ */
 function procesarIncidente(listaIncidencias, recursosIniciales) {
     let recursosDisponibles = recursosIniciales;
 
-    for (let i = 0; i < incidencias.length; i++) {
-        let incidente = incidencias[i];
+    for (let i = 0; i < listaIncidencias.length; i++) {
+        let incidente = listaIncidencias[i];
 
-        // Punto de interrupcion para depurar
+        // Punto de interrupción para depurar
         debugger;
 
         if (incidente.estado === "resuelta") {
@@ -45,7 +80,6 @@ function procesarIncidente(listaIncidencias, recursosIniciales) {
         }
 
         if (incidente.gravedad === 5) {
-            // Para que salga con el icono de alerta
             console.error(`¡ALERTA MÁXIMA! Incidencia #${incidente.id} - ${incidente.descripcion}`);
         } else {
             console.log(`Procesando incidencia #${incidente.id}: ${incidente.descripcion} (Gravedad: ${incidente.gravedad})`);
@@ -57,12 +91,11 @@ function procesarIncidente(listaIncidencias, recursosIniciales) {
         console.log(`Recursos restantes: ${recursosDisponibles}`);
 
         if (recursosDisponibles <= 0) {
-            // Para que salga con el icono de advertencia
             console.warn(`¡Recursos agotados! Deteniendo sistema.`);
             break;
         }
     }
 }
 
-// Llamamos a la función para procesar las incidencias
+// Llamada para procesar las incidencias iniciales
 procesarIncidente(incidencias, 10);
