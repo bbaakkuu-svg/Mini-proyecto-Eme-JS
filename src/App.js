@@ -23,12 +23,13 @@ const _DEBUGMODE = true;
  * @type {Incidencia[]}
  */
 const incidencias = [
-    { id: 1, descripcion: "Incendio forestal en sector sur", gravedad: 5, estado: "pendiente", recursosNecesarios: 3 },
-    { id: 2, descripcion: "Fuga menor de agua en vía pública", gravedad: 2, estado: "resuelta", recursosNecesarios: 1 },
-    { id: 3, descripcion: "Accidente de tráfico en circunvalación", gravedad: 4, estado: "pendiente", recursosNecesarios: 2 },
-    { id: 4, descripcion: "Rescate en ascensor bloqueado", gravedad: 2, estado: "pendiente", recursosNecesarios: 1 },
-    { id: 5, descripcion: "Inundación grave en paso subterráneo", gravedad: 5, estado: "pendiente", recursosNecesarios: 4 },
-    { id: 6, descripcion: "Falsa alarma de incendio en colegio", gravedad: 1, estado: "resuelta", recursosNecesarios: 1 }
+    { id: 1, descripcion: "Incendio forestal en sector sur", gravedad: 5, estado: "pendiente" },
+    { id: 2, descripcion: "Fuga menor de agua en vía pública", gravedad: 2, estado: "resuelta" },
+    { id: 3, descripcion: "Accidente de tráfico en circunvalación", gravedad: 4, estado: "pendiente" },
+    { id: 4, descripcion: "Rescate en ascensor bloqueado", gravedad: 2, estado: "pendiente" },
+    { id: 5, descripcion: "Inundación grave en paso subterráneo", gravedad: 5, estado: "pendiente" },
+    { id: 6, descripcion: "Falsa alarma de incendio en colegio", gravedad: 1, estado: "resuelta" },
+    { id: 7, descripcion: "Rescate de un gato", gravedad: 1, estado: "pendiente" }
 ];
 
 /**
@@ -69,9 +70,6 @@ function procesarIncidente(listaIncidencias, recursosIniciales) {
     for (let i = 0; i < listaIncidencias.length; i++) {
         let incidente = listaIncidencias[i];
 
-        // Punto de interrupción para depurar
-        debugger;
-
         if (incidente.estado === "resuelta") {
             if (_DEBUGMODE) {
                 console.log(`Incidencia #${incidente.id} ya resuelta`);
@@ -80,6 +78,8 @@ function procesarIncidente(listaIncidencias, recursosIniciales) {
         }
 
         if (incidente.gravedad === 5) {
+            // Punto de interrupción en filtro crítico (máxima gravedad)
+            debugger;
             console.error(`¡ALERTA MÁXIMA! Incidencia #${incidente.id} - ${incidente.descripcion}`);
         } else {
             console.log(`Procesando incidencia #${incidente.id}: ${incidente.descripcion} (Gravedad: ${incidente.gravedad})`);
